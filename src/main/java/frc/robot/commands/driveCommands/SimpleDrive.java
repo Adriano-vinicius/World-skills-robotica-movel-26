@@ -1,0 +1,45 @@
+package frc.robot.commands.driveCommands;
+
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.DriveBase;
+
+public class SimpleDrive extends CommandBase
+{
+    private static final DriveBase drive = RobotContainer.driveBase;
+
+    private  double x;
+    private double y;
+    private double z;
+
+    public SimpleDrive(double x, double y, double z)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = y;
+        addRequirements(drive);
+    }
+
+    @Override
+    public void initialize()
+    {}
+
+    @Override
+    public void execute()
+    {
+        drive.holonomicDrive(x, y, z);
+    }
+
+    @Override
+    public void end (boolean interrupted)
+    {
+        drive.setDriveMotorSpeeds(0.0, 0.0, 0.0);;
+    }
+
+    @Override
+    public boolean isFinished()
+    {
+        return false;
+    }
+
+}
