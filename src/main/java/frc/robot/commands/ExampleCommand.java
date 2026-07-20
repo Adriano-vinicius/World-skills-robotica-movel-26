@@ -15,12 +15,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  */
 public class ExampleCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-<<<<<<< HEAD
  private final ExampleSubsystem m_subsystem;
-=======
-  private final ExampleSubsystem m_subsystem;
->>>>>>> 4d490eb283dfebf3ffc905e2919dc56525f68dc8
-
   /**
    * Creates a new ExampleCommand.
    *
