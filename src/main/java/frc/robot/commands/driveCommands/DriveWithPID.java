@@ -2,7 +2,7 @@ package frc.robot.commands.driveCommands;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-//import edu.wpi.first.wpiutil.math.MathUtil;
+import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveBase;
 
@@ -41,10 +41,9 @@ public class DriveWithPID extends CommandBase
     @Override
     public void execute()
     {
-        drive.holonomicDrive(0.0, 0.0, 0.0);
-        //drive.holonomicDrive(0.0,
-        //MathUtil.clamp(pidYAxis.calculate(drive.getAvarageFowardEncoderDistance(), setpointDistance), -0.5, 0.5),
-        //MathUtil.clamp(pidZAxis.calculate(drive.getYaw(), setpointYaw), -1, 1));
+        drive.holonomicDrive(0.0,
+        MathUtil.clamp(pidYAxis.calculate(drive.getAvarageFowardEncoderDistance(), setpointDistance), -0.5, 0.5),
+        MathUtil.clamp(pidZAxis.calculate(drive.getYaw(), setpointYaw), -1, 1));
     }
 
     @Override

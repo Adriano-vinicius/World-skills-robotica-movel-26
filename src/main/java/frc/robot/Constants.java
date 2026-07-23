@@ -79,4 +79,22 @@ public final class Constants
          //Distância por tick
          public static final double ELEVATOR_DIST_TICK = (Math.PI * 2 * pulleyRadius) / pulleyPulseRatio;
 
+
+         public static final int ENCODER_0 = 0;
+         public static final int ENCODER_2 = 2;
+         public static final int ENCODER_3 = 3;
+
+         public static final int BTN_START = 10;
+         public static final int BTN_STOP = 9;
+         public static final int LEDRun = 13;
+         public static final int LEDStop = 14;
+
+         public static final int TRIG1 = 12;
+         public static final int ECHO2 = 11;
+         public static final int ULTRA1 = 0;
+         public static final int ULTRA2 = 1;
+
+         public static final double VELOCIDADE = 0.5;
+         public static final double DIST_PER_TICK = 0.000214659;
+
 }

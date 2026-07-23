@@ -4,7 +4,9 @@ package frc.robot.subsystems;
 import com.studica.frc.Servo;
 import com.studica.frc.Titan;
 import com.studica.frc.Titan.Motor;
+import com.studica.frc.Titan.Encoder;
 
+import edu.wpi.first.networktables.NetworkTableEntry;
 // Biblioteca WPILib
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
@@ -43,6 +45,11 @@ public class OMS extends SubsystemBase
     /*
      * Servo responsável pela garra.
      */
+
+
+    private Encoder elevatorEncoder;
+
+    
     private Servo claw;
 
     //==========================================================
@@ -52,8 +59,9 @@ public class OMS extends SubsystemBase
     /*
      * Aba onde serão exibidos os dados do OMS.
      */
-    private ShuffleboardTab tab =
-            Shuffleboard.getTab("Training Robot");
+    private ShuffleboardTab tab = Shuffleboard.getTab("Training Robot");
+    private NetworkTableEntry elevatorEncoderValue = tab.add("Elevator Encoder", 0).getEntry();
+
 
     //==========================================================
     // CONSTRUTOR
@@ -78,6 +86,9 @@ public class OMS extends SubsystemBase
         //------------------------------------------------------
 
         claw = new Servo(Constants.DIF_SERVO);
+        
+        elevatorEncoder =
+        titan.getEncoder(Constants.M2, Constants.ELEVATOR_DIST_TICK);
     }
 
     //==========================================================
@@ -96,6 +107,11 @@ public class OMS extends SubsystemBase
         elevator.set(speed);
     }
 
+    public double getElevatorEncoderDistance()
+    {
+        return elevatorEncoder.getDistance();
+    }
+
     //==========================================================
     // GARRA
     //==========================================================
@@ -112,6 +128,11 @@ public class OMS extends SubsystemBase
         claw.setAngle(degrees);
     }
 
+    public void resetEncoders()
+    {
+        elevatorEncoder.reset();
+    }
+
     //==========================================================
     // EXECUTA A CADA 20ms
     //==========================================================
@@ -124,5 +145,7 @@ public class OMS extends SubsystemBase
          * encoder, corrente do motor,
          * posição do servo etc.
          */
+
+         elevatorEncoderValue.setDouble(getElevatorEncoderDistance());
     }
 }

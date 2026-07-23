@@ -224,6 +224,26 @@ public class DriveBase extends SubsystemBase
         navx.zeroYaw();
     }
 
+        //==========================================================
+    // DISTÂNCIA MÉDIA DOS ENCODERS
+    //==========================================================
+
+    /*
+     * Retorna a distância média percorrida pelo robô.
+     *
+     * Atualmente retorna 0.0 porque os encoders ainda
+     * não foram implementados na versão nova da Titan.
+     *
+     * Quando os encoders forem adicionados, este método
+     * deverá retornar a média entre os encoders esquerdo
+     * e direito.
+     */
+    public double getAvarageFowardEncoderDistance()
+    {
+        return 0.0;
+    }
+    
+
     //==========================================================
     // EXECUTA A CADA CICLO DO ROBÔ (20 ms)
     //==========================================================
